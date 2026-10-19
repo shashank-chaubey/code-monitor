@@ -156,7 +156,7 @@ export default function HomePage() {
               <span className="text-primary">Make better decisions.</span>
             </h1>
             <p className="landing-reveal landing-reveal-delay-3 mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              We’re building an AI-powered code health platform to help teams
+              Building an AI-powered code health platform to help teams
               understand their repositories, spot risks, and decide what to
               improve next.
             </p>
@@ -348,7 +348,7 @@ export default function HomePage() {
               Turn code complexity into actionable insight.
             </h2>
             <p className="mt-4 leading-7 text-white/70">
-              We’re preparing Code Monitor for launch. Explore the product
+              Preparing Code Monitor for launch. Explore the product
               preview and workflow while we get it ready.
             </p>
           </div>
