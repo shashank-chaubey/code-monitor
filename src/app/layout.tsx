@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
 import { Figtree, JetBrains_Mono, Manrope } from "next/font/google";
 
 const figtree = Figtree({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             disableTransitionOnChange
           >
             {children}
+            <Analytics />
           </ThemeProvider>
       </body>
     </html>

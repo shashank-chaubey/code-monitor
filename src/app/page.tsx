@@ -59,8 +59,8 @@ export default function HomePage() {
   return (
     <main className="landing-shell min-h-screen overflow-hidden bg-background text-foreground">
       {/* Navigation */}
-      <header className="landing-header sticky top-0">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <header className="landing-header">
+        <div className="mx-auto flex w-full items-center justify-between px-4 py-3 sm:px-6">
           <Link href="#top" className="flex items-center gap-3">
             <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
               CM
