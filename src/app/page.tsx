@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const workflow = [
@@ -85,14 +86,29 @@ export default function HomePage() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <ThemeToggle className="border-border bg-transparent hover:bg-muted" />
             <Link
               href="#demo"
-              className="landing-btn-primary inline-flex items-center rounded-xl px-4 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="landing-btn-primary hidden items-center rounded-full px-4 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
             >
               Explore demo
             </Link>
+            <details className="landing-mobile-menu relative md:hidden">
+              <summary className="flex h-9 cursor-pointer list-none items-center gap-2 rounded-full border border-border bg-background/70 px-3 text-sm font-medium text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+                <Menu aria-hidden="true" className="size-4" />
+                <span className="sr-only">Open navigation menu</span>
+              </summary>
+              <nav aria-label="Mobile navigation" className="absolute right-0 top-[calc(100%+0.75rem)] flex w-52 flex-col gap-1 rounded-2xl border border-border bg-card p-2 text-sm shadow-xl shadow-foreground/10">
+                <a className="landing-nav-link" href="#why">Overview</a>
+                <a className="landing-nav-link" href="#workflow">How it works</a>
+                <a className="landing-nav-link" href="#features">Features</a>
+                <a className="landing-nav-link" href="#demo">Demo</a>
+                <Link className="landing-btn-primary mt-1 rounded-xl px-3 py-2.5 text-center font-semibold sm:hidden" href="#demo">
+                  Explore demo
+                </Link>
+              </nav>
+            </details>
           </div>
         </div>
       </header>
