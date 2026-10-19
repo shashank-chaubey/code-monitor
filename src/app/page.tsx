@@ -44,17 +44,43 @@ const features = [
   },
 ];
 
-const codeLines = [
-  { color: "text-white/45", text: "// Repository analysis" },
-  { color: "text-cyan-200", text: 'repository.connect("your-project")' },
-  { color: "text-cyan-300", text: "✓ Source files indexed" },
-  { color: "text-cyan-300", text: "✓ Codebase context prepared" },
-  { color: "text-cyan-300", text: "✓ Analysis report generated" },
-  { color: "text-white/70", text: "" },
-  { color: "text-cyan-100", text: "report.healthScore = 82" },
-  { color: "text-amber-300", text: "report.highPriorityFindings = 3" },
-  { color: "text-white/80", text: 'assistant.ask("Explain the auth flow")' },
+const navLinks = [
+  { href: "#why", label: "Overview" },
+  { href: "#workflow", label: "How it works" },
+  { href: "#features", label: "Features" },
+  { href: "#demo", label: "Demo" },
 ];
+
+const codeLines = [
+  { cls: "code-comment", text: "// AI codebase analysis" },
+  { cls: "code-key", text: 'repository.connect("your-project")' },
+  { cls: "", text: "" },
+  { cls: "code-ok", text: "→ reading files.............. done" },
+  { cls: "code-ok", text: "→ detecting framework........ Next.js" },
+  { cls: "code-ok", text: "→ building code context...... ready" },
+  { cls: "code-ok", text: "→ analyzing code health....... complete" },
+  { cls: "", text: "" },
+  { cls: "code-key", text: "health.score = 82" },
+  { cls: "code-key", text: "issues.highPriority = 3" },
+  { cls: "code-key", text: 'ask("Explain the auth flow")' },
+];
+
+function CodePlane() {
+  const lines = [...codeLines, ...codeLines, ...codeLines];
+
+  return (
+    <div className="landing-code-plane" aria-hidden="true">
+      <div className="landing-code-fade" />
+      <pre>
+        {lines.map((line, index) => (
+          <span key={`${line.text}-${index}`} className={line.cls || undefined}>
+            {line.text}{"\n"}
+          </span>
+        ))}
+      </pre>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -71,47 +97,41 @@ export default function HomePage() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex">
-            <a className="landing-nav-link" href="#why">
-              Overview
-            </a>
-            <a className="landing-nav-link" href="#workflow">
-              How it works
-            </a>
-            <a className="landing-nav-link" href="#features">
-              Features
-            </a>
-            <a className="landing-nav-link" href="#demo">
-              Demo
-            </a>
+          <nav aria-label="Landing sections" className="hidden items-center gap-1 lg:flex lg:gap-2">
+            {navLinks.map((link) => (
+              <a key={link.href} className="landing-nav-link" href={link.href}>
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <ThemeToggle className="border-border bg-transparent hover:bg-muted" />
             <Link
               href="/login"
-              className="hidden items-center rounded-full border border-border bg-background/70 px-4 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:inline-flex"
+              className="hidden items-center rounded-full border border-border bg-background/70 px-4 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:inline-flex"
             >
               Sign in
             </Link>
             <Link
               href="#demo"
-              className="landing-btn-primary hidden items-center rounded-full px-4 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
+              className="landing-btn-primary hidden items-center rounded-full px-4 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:inline-flex"
             >
               Explore demo
             </Link>
-            <details className="landing-mobile-menu relative md:hidden">
+            <details className="landing-mobile-menu relative lg:hidden">
               <summary className="flex h-9 cursor-pointer list-none items-center gap-2 rounded-full border border-border bg-background/70 px-3 text-sm font-medium text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
                 <Menu aria-hidden="true" className="size-4" />
                 <span className="sr-only">Open navigation menu</span>
               </summary>
               <nav aria-label="Mobile navigation" className="absolute right-0 top-[calc(100%+0.75rem)] flex w-52 flex-col gap-1 rounded-2xl border border-border bg-card p-2 text-sm shadow-xl shadow-foreground/10">
-                <Link className="landing-nav-link sm:hidden" href="/login">Sign in</Link>
-                <a className="landing-nav-link" href="#why">Overview</a>
-                <a className="landing-nav-link" href="#workflow">How it works</a>
-                <a className="landing-nav-link" href="#features">Features</a>
-                <a className="landing-nav-link" href="#demo">Demo</a>
-                <Link className="landing-btn-primary mt-1 rounded-xl px-3 py-2.5 text-center font-semibold sm:hidden" href="#demo">
+                <Link className="landing-nav-link" href="/login">Sign in</Link>
+                {navLinks.map((link) => (
+                  <a key={link.href} className="landing-nav-link" href={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+                <Link className="landing-btn-primary mt-1 rounded-xl px-3 py-2.5 text-center font-semibold lg:hidden" href="#demo">
                   Explore demo
                 </Link>
               </nav>
@@ -124,33 +144,29 @@ export default function HomePage() {
       <section id="top" className="landing-hero relative isolate">
         <div aria-hidden className="landing-hero-glow pointer-events-none absolute inset-0 -z-10" />
 
-        <div className="mx-auto grid min-h-[680px] max-w-7xl items-center gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm">
-              <span className="size-1.5 rounded-full bg-emerald-600" />
+        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-7xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <div className="max-w-2xl py-6 sm:py-10">
+            <div className="landing-reveal inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm">
+              <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" />
               Launching soon
             </div>
 
-            <h1 className="landing-title mt-7 text-5xl text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="landing-reveal landing-reveal-delay-1 landing-title mt-6 text-5xl text-foreground sm:text-6xl lg:text-[4.75rem]">
               A clearer view of your codebase is coming.
-              <span className="text-primary">
-                Make better decisions.
-              </span>
+              <span className="text-primary">Make better decisions.</span>
             </h1>
-
-            <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground sm:text-xl">
+            <p className="landing-reveal landing-reveal-delay-3 mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               We’re building an AI-powered code health platform to help teams
               understand their repositories, spot risks, and decide what to
               improve next.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="landing-reveal landing-reveal-delay-4 mt-8 flex flex-wrap gap-3">
               <Link
                 href="#demo"
                 className="landing-btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold"
               >
-                See the product preview
-                <span aria-hidden>→</span>
+                See the product preview <span aria-hidden>→</span>
               </Link>
               <a
                 href="#workflow"
@@ -160,77 +176,14 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <span className="text-primary">✓</span>
-                Repository-aware answers
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-primary">✓</span>
-                Traceable source references
-              </span>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2"><span className="text-primary">✓</span>Repository-aware answers</span>
+              <span className="flex items-center gap-2"><span className="text-primary">✓</span>Traceable source references</span>
             </div>
           </div>
 
-          {/* Decorative product preview */}
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -inset-4 rounded-[2rem] bg-primary/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-foreground/10">
-              <div className="flex items-center justify-between border-b border-border px-5 py-4">
-                <div className="flex items-center gap-2">
-                  <span className="size-2.5 rounded-full bg-rose-400" />
-                  <span className="size-2.5 rounded-full bg-amber-400" />
-                  <span className="size-2.5 rounded-full bg-emerald-400" />
-                  <span className="ml-2 text-xs font-medium text-muted-foreground">
-                    Repository overview
-                  </span>
-                </div>
-                <span className="rounded-md bg-primary/10 px-2 py-1 text-[11px] font-medium text-primary">
-                  Analysis complete
-                </span>
-              </div>
-
-              <div className="grid gap-4 p-5 sm:p-6">
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="rounded-xl border border-border p-4">
-                    <p className="text-xs text-muted-foreground">Code health score</p>
-                    <p className="mt-2 text-3xl font-semibold tracking-tight">82<span className="text-base font-normal text-muted-foreground">/100</span></p>
-                    <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
-                      <div className="h-full w-[82%] rounded-full bg-primary" />
-                    </div>
-                  </div>
-                  <div className="rounded-xl border border-border p-4">
-                    <p className="text-xs text-muted-foreground">Priority findings</p>
-                    <p className="mt-2 text-3xl font-semibold tracking-tight">03</p>
-                    <p className="mt-2 text-xs text-amber-600 dark:text-amber-300">Requires review</p>
-                  </div>
-                </div>
-
-                <div className="rounded-xl bg-(--landing-navy) p-5 font-mono text-xs leading-7 text-white shadow-inner sm:text-sm">
-                  {codeLines.map((line, index) => (
-                    <div key={`${line.text}-${index}`} className={line.color}>
-                      {line.text || "\u00a0"}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="rounded-xl border border-primary/20 bg-accent p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-accent-foreground">
-                    Repository Q&A
-                  </p>
-                  <p className="mt-2 text-sm text-foreground">
-                    “Where is authentication handled?”
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Review the authentication module and follow the cited source
-                    references to verify the implementation.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="mt-4 text-center text-xs text-muted-foreground">
-              Illustrative product preview — metrics are sample values.
-            </p>
+          <div className="hidden lg:block">
+            <CodePlane />
           </div>
         </div>
       </section>
