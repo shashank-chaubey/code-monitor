@@ -251,17 +251,21 @@ html:has(.landing-shell) {
   transform: translateX(-50%);
   z-index: 40;
   border-radius: 9999px;
-  background: rgba(243, 246, 250, 0.9);
-  border: 1px solid rgba(207, 217, 230, 0.95);
-  box-shadow: 0 12px 36px rgba(10, 18, 32, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 16px 44px rgba(10, 18, 32, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(165%);
+  -webkit-backdrop-filter: blur(24px) saturate(165%);
 }
 
 .dark .landing-header {
-  background: rgba(17, 28, 46, 0.88);
-  border-color: rgba(36, 48, 68, 0.95);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  background: rgba(11, 18, 32, 0.62);
+  border-color: rgba(232, 238, 246, 0.12);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(232, 238, 246, 0.1);
 }
 
 .landing-brand,
