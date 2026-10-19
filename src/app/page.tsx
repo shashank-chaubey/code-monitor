@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const workflow = [
+const WORKFLOW = [
   {
     step: "01",
     title: "Connect your repository",
@@ -23,7 +23,7 @@ const workflow = [
   },
 ];
 
-const features = [
+const FEATURES = [
   {
     number: "01",
     title: "Code health reports",
@@ -44,14 +44,14 @@ const features = [
   },
 ];
 
-const navLinks = [
+const NAV_LINKS = [
   { href: "#why", label: "Overview" },
   { href: "#workflow", label: "How it works" },
   { href: "#features", label: "Features" },
   { href: "#demo", label: "Demo" },
 ];
 
-const codeLines = [
+const CODE_LINES = [
   { cls: "code-comment", text: "// AI codebase analysis" },
   { cls: "code-key", text: 'repository.connect("your-project")' },
   { cls: "", text: "" },
@@ -66,7 +66,7 @@ const codeLines = [
 ];
 
 function CodePlane() {
-  const lines = [...codeLines, ...codeLines, ...codeLines];
+  const lines = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES];
 
   return (
     <div className="landing-code-plane" aria-hidden="true">
@@ -98,7 +98,7 @@ export default function HomePage() {
           </Link>
 
           <nav aria-label="Landing sections" className="hidden items-center gap-1 lg:flex lg:gap-2">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a key={link.href} className="landing-nav-link" href={link.href}>
                 {link.label}
               </a>
@@ -126,7 +126,7 @@ export default function HomePage() {
               </summary>
               <nav aria-label="Mobile navigation" className="absolute right-0 top-[calc(100%+0.75rem)] flex w-52 flex-col gap-1 rounded-2xl border border-border bg-card p-2 text-sm shadow-xl shadow-foreground/10">
                 <Link className="landing-nav-link" href="/login">Sign in</Link>
-                {navLinks.map((link) => (
+                {NAV_LINKS.map((link) => (
                   <a key={link.href} className="landing-nav-link" href={link.href}>
                     {link.label}
                   </a>
@@ -226,7 +226,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {workflow.map((item) => (
+            {WORKFLOW.map((item) => (
               <article
                 key={item.step}
                 className="rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-foreground/5 sm:p-8"
@@ -261,7 +261,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-14 grid gap-0 border-t border-border md:grid-cols-3 md:divide-x md:divide-border">
-            {features.map((feature) => (
+            {FEATURES.map((feature) => (
               <article key={feature.number} className="py-8 md:px-7 md:py-10 md:first:pl-0 md:last:pr-0">
                 <p className="font-mono text-sm text-primary">{feature.number}</p>
                 <h3 className="mt-5 text-xl font-semibold tracking-tight">{feature.title}</h3>
