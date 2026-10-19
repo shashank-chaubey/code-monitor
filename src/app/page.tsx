@@ -89,6 +89,12 @@ export default function HomePage() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <ThemeToggle className="border-border bg-transparent hover:bg-muted" />
             <Link
+              href="/login"
+              className="hidden items-center rounded-full border border-border bg-background/70 px-4 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:inline-flex"
+            >
+              Sign in
+            </Link>
+            <Link
               href="#demo"
               className="landing-btn-primary hidden items-center rounded-full px-4 py-2.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
             >
@@ -100,6 +106,7 @@ export default function HomePage() {
                 <span className="sr-only">Open navigation menu</span>
               </summary>
               <nav aria-label="Mobile navigation" className="absolute right-0 top-[calc(100%+0.75rem)] flex w-52 flex-col gap-1 rounded-2xl border border-border bg-card p-2 text-sm shadow-xl shadow-foreground/10">
+                <Link className="landing-nav-link sm:hidden" href="/login">Sign in</Link>
                 <a className="landing-nav-link" href="#why">Overview</a>
                 <a className="landing-nav-link" href="#workflow">How it works</a>
                 <a className="landing-nav-link" href="#features">Features</a>
