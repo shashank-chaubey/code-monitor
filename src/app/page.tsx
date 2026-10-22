@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { GitHubStars } from "@/components/github-stars";
 
 const WORKFLOW = [
   {
@@ -107,7 +106,6 @@ export default function HomePage() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <GitHubStars />
             <ThemeToggle className="border-border bg-transparent hover:bg-muted" />
             <Link
               href="/login"

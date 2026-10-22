@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${figtree.variable} ${jetBrainsMono.variable} ${manrope.variable} h-full antialiased`}>
+    <html lang="en" className={`${figtree.variable} ${jetBrainsMono.variable} ${manrope.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
           <ThemeProvider
             attribute="class"
